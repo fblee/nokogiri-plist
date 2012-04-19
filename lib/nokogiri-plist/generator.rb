@@ -40,6 +40,8 @@ module NokogiriPList
           tag("real", value, current_indent)
         when BigDecimal
           tag("real", value.to_s('F'), current_indent)
+        when Data
+          tag("data", value.read, current_indent)
         end
       end
 
@@ -67,7 +69,7 @@ module NokogiriPList
 end
 
 
-[String, Symbol, Integer, Float, BigDecimal, Date, Time, Hash, Array, TrueClass, FalseClass].each do |klass|
+[String, Symbol, Integer, Float, BigDecimal, Data, Date, Time, Hash, Array, TrueClass, FalseClass].each do |klass|
   klass.class_eval do
 
     def to_plist_xml(current_indent = 0)

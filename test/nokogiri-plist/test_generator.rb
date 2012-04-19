@@ -55,6 +55,10 @@ class NokogiriPList::GeneratorTest < Test::Unit::TestCase
       assert_equal "    <real>42.0</real>", BigDecimal.new("42").to_plist_xml(2)
     end
 
+    should "output data correctly" do
+      assert_equal "<data>helloworld</data>", StringIO.new("helloworld").to_plist_xml
+      assert_equal "    <data>helloworld</data>", StringIO.new("helloworld").to_plist_xml(2)
+    end
   end
 
 end
