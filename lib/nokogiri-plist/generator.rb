@@ -1,3 +1,4 @@
+require 'htmlentities'
 require 'bigdecimal'
 
 module NokogiriPList
@@ -33,7 +34,7 @@ module NokogiriPList
         when Date # also catches DateTime
           tag("date", value.strftime('%Y-%m-%dT%H:%M:%SZ'), current_indent)
         when String, Symbol
-          tag("string", value, current_indent)
+          tag("string", HTMLEntities.new.encode(value), current_indent)
         when Fixnum, Bignum, Integer
           tag("integer", value, current_indent)
         when Float

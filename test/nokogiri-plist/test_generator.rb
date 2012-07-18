@@ -29,6 +29,11 @@ class NokogiriPList::GeneratorTest < Test::Unit::TestCase
       assert_equal("    </dict>", xml_lines[4])
     end
 
+    should "escape killer XML characters correctly" do
+      xml_lines = "foo&bar".to_plist_xml
+      assert_equal "<string>foo&amp;bar</string>", xml_lines
+    end
+
     should "output strings correctly" do
       assert_equal "<string>test</string>", "test".to_plist_xml
       assert_equal "    <string>test</string>", "test".to_plist_xml(2)

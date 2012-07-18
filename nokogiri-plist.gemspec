@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = ">= 1.3.6"
 
+  s.add_dependency 'htmlentities'
+
   s.add_development_dependency 'shoulda'
   s.add_development_dependency 'mocha'
 
